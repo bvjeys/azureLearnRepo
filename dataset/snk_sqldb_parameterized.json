@@ -1,0 +1,30 @@
+{
+	"name": "snk_sqldb_parameterized",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQLDB_connect",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"databaseName": {
+				"type": "string"
+			},
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().databaseName",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
