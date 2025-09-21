@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "vjadf2025"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LS_SQLDB_connect_password": {
+			"value": ""
+		},
+		"LS_vjdashboard_password": {
+			"value": ""
+		},
+		"LS_vjdashboard_DL_accountKey": {
+			"value": ""
+		},
+		"Ls_AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "sqlservervjdashboard.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "sqldbvjdashboard"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "cloud"
+		},
+		"LS_SQLDB_connect_properties_typeProperties_server": {
+			"value": "sqlservervjdashboard.database.windows.net"
+		},
+		"LS_SQLDB_connect_properties_typeProperties_database": {
+			"value": "sqldbvjdashboard"
+		},
+		"LS_SQLDB_connect_properties_typeProperties_userName": {
+			"value": "cloud"
+		},
+		"LS_vjdashboard_properties_typeProperties_server": {
+			"value": "localhost"
+		},
+		"LS_vjdashboard_properties_typeProperties_database": {
+			"value": "world"
+		},
+		"LS_vjdashboard_properties_typeProperties_username": {
+			"value": "root"
+		},
+		"LS_vjdashboard_DL_properties_typeProperties_url": {
+			"value": "https://vjstorageaccount.dfs.core.windows.net/"
+		}
+	}
+}
