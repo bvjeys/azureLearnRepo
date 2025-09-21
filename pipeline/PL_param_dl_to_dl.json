@@ -1,0 +1,121 @@
+{
+	"name": "PL_param_dl_to_dl",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy_data_dl_to_dl",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SRC_vjdashboard",
+						"type": "DatasetReference",
+						"parameters": {
+							"containerName": {
+								"value": "@pipeline().parameters.SrcContainerName",
+								"type": "Expression"
+							},
+							"folderName": {
+								"value": "@pipeline().parameters.SrcFolderName",
+								"type": "Expression"
+							},
+							"fileName": {
+								"value": "@pipeline().parameters.SrcFilename",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SRC_vjdashboard",
+						"type": "DatasetReference",
+						"parameters": {
+							"containerName": {
+								"value": "@pipeline().parameters.SnkContainerName",
+								"type": "Expression"
+							},
+							"folderName": {
+								"value": "@pipeline().parameters.SnkFolderName",
+								"type": "Expression"
+							},
+							"fileName": {
+								"value": "@pipeline().parameters.SnkFilename",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"SrcContainerName": {
+				"type": "string",
+				"defaultValue": "landing"
+			},
+			"SrcFolderName": {
+				"type": "string",
+				"defaultValue": "Ireland"
+			},
+			"SrcFilename": {
+				"type": "string",
+				"defaultValue": "House_Prices.csv"
+			},
+			"SnkContainerName": {
+				"type": "string",
+				"defaultValue": "drv"
+			},
+			"SnkFolderName": {
+				"type": "string"
+			},
+			"SnkFilename": {
+				"type": "string",
+				"defaultValue": "House_Prices.csv"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-09-18T11:08:55Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

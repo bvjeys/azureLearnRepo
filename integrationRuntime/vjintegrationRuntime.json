@@ -1,0 +1,6 @@
+{
+	"name": "vjintegrationRuntime",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

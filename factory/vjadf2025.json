@@ -1,0 +1,9 @@
+{
+	"name": "vjadf2025",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7ceb9fbf-5a9d-4127-b351-fe5dd122502e",
+		"tenantId": "66edcfcc-6218-40e7-be80-e8d0e1b5ccd1"
+	}
+}

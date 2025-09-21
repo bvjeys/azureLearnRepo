@@ -1,0 +1,16 @@
+{
+	"name": "SRC_Country",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_vjdashboard",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "MySqlTable",
+		"schema": [],
+		"typeProperties": {
+			"tableName": "`country`"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
