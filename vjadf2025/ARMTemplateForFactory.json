@@ -110,6 +110,7 @@
 							},
 							"sink": {
 								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE [dbo].[cars_motor_tax];",
 								"writeBehavior": "upsert",
 								"upsertSettings": {
 									"useTempDB": true,
