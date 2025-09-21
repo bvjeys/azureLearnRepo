@@ -423,6 +423,12 @@
 						"typeProperties": {
 							"source": {
 								"type": "DelimitedTextSource",
+								"additionalColumns": [
+									{
+										"name": "FILE_PATH",
+										"value": "$$FILEPATH"
+									}
+								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
@@ -434,14 +440,176 @@
 							},
 							"sink": {
 								"type": "AzureSqlSink",
-								"preCopyScript": "truncate table [dbo].[cars_motor_tax];",
-								"writeBehavior": "insert",
+								"writeBehavior": "upsert",
+								"upsertSettings": {
+									"useTempDB": true,
+									"keys": [
+										"model"
+									]
+								},
 								"sqlWriterUseTableLock": false,
 								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
 							"translator": {
 								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "model",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "model",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									},
+									{
+										"source": {
+											"name": "mpg",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "mpg",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "cyl",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "cyl",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "disp",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "disp",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "hp",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "hp",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "drat",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "drat",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "wt",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "wt",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "qsec",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "qsec",
+											"type": "Double",
+											"physicalType": "float"
+										}
+									},
+									{
+										"source": {
+											"name": "vs",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "vs",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "am",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "am",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "gear",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "gear",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "carb",
+											"type": "String",
+											"physicalType": "String"
+										},
+										"sink": {
+											"name": "carb",
+											"type": "Int32",
+											"physicalType": "int"
+										}
+									},
+									{
+										"source": {
+											"name": "FILE_PATH",
+											"type": "String"
+										},
+										"sink": {
+											"name": "FILEPATH",
+											"type": "String",
+											"physicalType": "varchar"
+										}
+									}
+								],
 								"typeConversion": true,
 								"typeConversionSettings": {
 									"allowDataTruncation": true,
